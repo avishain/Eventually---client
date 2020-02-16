@@ -15,11 +15,10 @@ const Footer = () => {
 
 const containerStyle = {
     height: '50px',
-    position: 'sticky',
+    position: 'relative',
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex: 1000,
     backgroundColor: 'rgba(0,0,0,0.95)',
     display: 'flex',
     flexDirection: 'row',
