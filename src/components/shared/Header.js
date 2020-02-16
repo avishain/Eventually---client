@@ -11,6 +11,7 @@ const Header = () => {
             <Tabs />
             <Notifications/>
             <UserIMage />
+            
         </header>
     );
 }
