@@ -22,7 +22,7 @@ const headerStyle = {
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 1000,
+    zIndex: 500,
     backgroundColor: '#67366B',
     boxShadow: '0px 10px 10px rgba(0, 0, 0, 0.16)',
     flexDirection: 'row',

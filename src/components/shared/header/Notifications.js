@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import IosNotifications from 'react-ionicons/lib/IosNotifications'
+import NotificationsWindow from '../NotificationsWindow';
 
 const Notifications = () => {
     const [shake, setShake] = useState(true);
@@ -19,6 +20,7 @@ const Notifications = () => {
         <a href='\#' style={containerStyle} {...{onClick}}>
             <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{shake}} />
             <div style={notificationsContainer}>
+                <NotificationsWindow />
                 <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >2</div>
             </div>
         </a>
