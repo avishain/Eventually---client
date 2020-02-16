@@ -11,11 +11,10 @@ const Header = () => {
             <Tabs />
             <Notifications/>
             <UserIMage />
-            
         </header>
     );
 }
-
+// comment
 const headerStyle = {
     display: 'flex',
     height: '100px',
