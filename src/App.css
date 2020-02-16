@@ -1,3 +1,13 @@
+html { 
+    margin: 0;  
+    background-color: #F3EBE3; 
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .App {
   text-align: center;
 }
