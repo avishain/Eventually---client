@@ -39,6 +39,10 @@ const rightPanelStyle = {
 
 const leftPanelStyle = {
     display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
+}
+
 const imageStyle = {
     height: 70,
     aspectRatio: 1,
