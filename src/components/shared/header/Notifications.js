@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import IosNotifications from 'react-ionicons/lib/IosNotifications'
 import NotificationsWindow from '../NotificationsWindow';
+import { connect } from 'react-redux';
+import { toggleNotificationsWindow } from '../../../redux/actions';
 
-const Notifications = () => {
+const Notifications = (props) => {
     const [shake, setShake] = useState(true);
 
     setInterval(() => {
@@ -12,13 +14,11 @@ const Notifications = () => {
         }, 7000);
     }, 8000);
 
-    const onClick = () => {
-        alert('onClick!')
-    }
-    
+    const onClick = () => props.toggleNotificationsWindow();
+
     return (
-        <a href='\#' style={containerStyle} {...{onClick}}>
-            <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{shake}} />
+        <a href='\#' style={containerStyle} {...{ onClick }}>
+            <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{ shake }} />
             <div style={notificationsContainer}>
                 <NotificationsWindow />
                 <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >2</div>
@@ -44,10 +44,10 @@ const notificationsContainer = {
     bottom: 0,
     height: 20,
     width: 20,
-    borderRadius: 10, 
+    borderRadius: 10,
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center'
 }
 
-export default Notifications;
+export default connect(null, { toggleNotificationsWindow })(Notifications);
