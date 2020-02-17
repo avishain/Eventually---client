@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-
-// import UserRidesStatisticsReducers from './statistics/userRidesStatisticsReducers';
+import HomeReducers from './home/homeReducers';
+import InboxReducer from './inbox/InboxReducer';
 
 export default combineReducers({
-    // statistics: UserRidesStatisticsReducers
+    home: HomeReducers,
+    inbox: InboxReducer
 });

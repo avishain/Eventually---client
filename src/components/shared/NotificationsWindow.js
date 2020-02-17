@@ -1,15 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Top from './notificationsWindow/Top';
 
-const NotificationsWindow = () => {
+// import { Route, Link } from 'react-router-dom';
+
+const NotificationsWindow = (props) => {
     return (
-        <div style={containerStyle}>
+        <div style={{ ...containerStyle, height: props.isOpen ? 300 : 0 }}>
+            <Top />
         </div>
     );
 }
 
 const containerStyle = {
     width: '350px',
-    height: 100,
+    transition: 'height .4s',
     position: 'absolute',
     top: 30,
     right: -40,
@@ -17,7 +22,14 @@ const containerStyle = {
     display: 'flex',
     backgroundColor: '#FFFFFF',
     boxShadow: '2px 4px 3px rgba(0, 0, 0, 0.25)',
-    borderRadius: '10px'
+    borderRadius: '10px',
+    overflow: 'hidden'
 };
 
-export default NotificationsWindow;
+function mapStateToProps(state) {
+    return {
+        isOpen: state.inbox.isOpen
+    }
+}
+
+export default connect(mapStateToProps, null)(NotificationsWindow);
