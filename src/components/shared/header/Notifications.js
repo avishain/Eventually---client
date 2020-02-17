@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import IosNotifications from 'react-ionicons/lib/IosNotifications'
-import NotificationsWindow from '../NotificationsWindow';
+import IosNotifications from 'react-ionicons/lib/IosNotifications';
+import NotificationsWindow from './NotificationsWindow';
 import { connect } from 'react-redux';
 import { toggleNotificationsWindow } from '../../../redux/actions';
 
@@ -17,13 +17,15 @@ const Notifications = (props) => {
     const onClick = () => props.toggleNotificationsWindow();
 
     return (
-        <a href='\#' style={containerStyle} {...{ onClick }}>
-            <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{ shake }} />
-            <div style={notificationsContainer}>
-                <NotificationsWindow />
-                <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >2</div>
-            </div>
-        </a>
+        <React.Fragment>
+            <a href='\#' style={containerStyle} {...{ onClick }}>
+                <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{ shake }} />
+                <div style={notificationsContainer}>
+                    <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >2</div>
+                </div>
+            </a>
+            <NotificationsWindow />
+        </React.Fragment>
     )
 }
 

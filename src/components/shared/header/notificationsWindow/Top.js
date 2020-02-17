@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../../assets/images/calendar.png';
+import logo from '../../../../assets/images/calendar.png';
 
 const Top = (props) => {
     const numberOfNotifications = 2;

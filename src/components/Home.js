@@ -4,15 +4,15 @@ import Container from 'react-bootstrap/Container';
 import CreateEventButton from './home/CreateEventButton';
 import EventCard from './home/EventCard';
 
-function App() {
+const Home = () => {
     return (
-            <Container style={{ width: '60%' }}>
-                <CreateEventButton />
-                <EventCard />
-                <EventCard />
-                <EventCard />
-            </Container>
+        <Container style={{ width: '60%' }}>
+            <CreateEventButton />
+            <EventCard />
+            <EventCard />
+            <EventCard />
+        </Container>
     );
 }
 
-export default App;
+export default Home;

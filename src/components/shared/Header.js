@@ -4,13 +4,15 @@ import Tabs from './header/Tabs';
 import Notifications from './header/Notifications';
 import UserIMage from './header/UserIMage';
 
-const Header = () => {
+const Header = props => {
+    const { imageSource } = props;
+
     return (
         <header style={headerStyle}>
             <Logo />
             <Tabs />
-            <Notifications/>
-            <UserIMage />
+            <Notifications  />
+            <UserIMage {...{ imageSource }} />
         </header>
     );
 }

@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Top from './notificationsWindow/Top';
+import Notification from './notificationsWindow/Notification';
 
 // import { Route, Link } from 'react-router-dom';
 
 const NotificationsWindow = (props) => {
     return (
-        <div style={{ ...containerStyle, height: props.isOpen ? 300 : 0 }}>
+        <div style={{ ...containerStyle, height: props.isOpen ? 250 : 0 }}>
             <Top />
+            <Notification />
         </div>
     );
 }
@@ -16,10 +18,11 @@ const containerStyle = {
     width: '350px',
     transition: 'height .4s',
     position: 'absolute',
-    top: 30,
-    right: -40,
+    top: 85,
+    right: 150,
     zIndex: 800,
     display: 'flex',
+    flexDirection: 'column',
     backgroundColor: '#FFFFFF',
     boxShadow: '2px 4px 3px rgba(0, 0, 0, 0.25)',
     borderRadius: '10px',

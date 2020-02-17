@@ -1,11 +1,11 @@
 import React from 'react';
 import IosArrowDown from 'react-ionicons/lib/IosArrowDown'
 
-const UserImage = () => {
+const UserImage = props=> {
     return (
         <a href='#\' onClick={() => alert('profile image clicked')} style={containerStyle}>
             <IosArrowDown fontSize='15px' color='rgb(230,230,230)' style={downStyle} />
-            <img src={'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg'} alt='' style={imageStyle} />
+            <img src={props.imageSource} alt='' style={imageStyle} />
         </a>
     );
 }

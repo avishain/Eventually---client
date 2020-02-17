@@ -1,4 +1,7 @@
 // inbox
 export const TOGGLE_NOTIFICATIONS_WINDOW = 'TOGGLE_NOTIFICATIONS_WINDOW';
 
+// user
+export const SET_USER = 'SET_USER';
+
 export const SET_NOTIFICATIONS = 'SET_NOTIFICATIONS';
