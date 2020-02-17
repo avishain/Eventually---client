@@ -1,14 +1,17 @@
 import React from 'react';
 import IosCalendar from 'react-ionicons/lib/IosCalendar';
+import MdImages from 'react-ionicons/lib/MdImages';
 
-const Notification = (props) => {
+const Notification = props => {
+    const { inbox } = props;
+    const textMessage = inbox.type === 'invitation' ? 'New event offer has been received' : 'New photos in event group';
     return (
         <div style={containerStyle}>
             <div style={logoContainerStyle}>
-                <IosCalendar color='blue' />
+                { inbox.type === 'invitation' ? <IosCalendar color='blue' /> : <MdImages color='red' /> }
             </div>
             <div style={{ paddingLeft: 10 }}>
-                <p style={{ ...textStyle, fontWeight: 'bold' }}>New event offer has been received</p>
+                <p style={{ ...textStyle, fontWeight: 'bold' }}>{textMessage}</p>
                 <p style={{ ...textStyle, color: '#9EA0A5' }}>2 hours ago</p>
             </div>
         </div>

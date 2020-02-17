@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { toggleNotificationsWindow } from '../../../redux/actions';
 
 const Notifications = (props) => {
+    const { toggleNotificationsWindow, inbox } = props;
     const [shake, setShake] = useState(true);
 
     setInterval(() => {
@@ -14,17 +15,17 @@ const Notifications = (props) => {
         }, 7000);
     }, 8000);
 
-    const onClick = () => props.toggleNotificationsWindow();
+    const onClick = () => toggleNotificationsWindow();
 
     return (
         <React.Fragment>
             <a href='\#' style={containerStyle} {...{ onClick }}>
                 <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{ shake }} />
                 <div style={notificationsContainer}>
-                    <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >2</div>
+                    <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >{inbox.length}</div>
                 </div>
             </a>
-            <NotificationsWindow />
+            <NotificationsWindow {...{ inbox }} />
         </React.Fragment>
     )
 }

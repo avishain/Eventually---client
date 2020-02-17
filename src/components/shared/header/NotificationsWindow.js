@@ -5,11 +5,15 @@ import Notification from './notificationsWindow/Notification';
 
 // import { Route, Link } from 'react-router-dom';
 
-const NotificationsWindow = (props) => {
+const NotificationsWindow = props => {
+    const { inbox, isOpen } = props;
+
+    const height = isOpen ? inbox.length * 64 + 110 : 0;
+    
     return (
-        <div style={{ ...containerStyle, height: props.isOpen ? 250 : 0 }}>
+        <div style={{ ...containerStyle, height }}>
             <Top />
-            <Notification />
+            { props.inbox.map(notification => <Notification inbox={notification} /> )}
         </div>
     );
 }

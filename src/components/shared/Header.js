@@ -5,13 +5,13 @@ import Notifications from './header/Notifications';
 import UserIMage from './header/UserIMage';
 
 const Header = props => {
-    const { imageSource } = props;
+    const { imageSource, inbox } = props;
 
     return (
         <header style={headerStyle}>
             <Logo />
             <Tabs />
-            <Notifications  />
+            <Notifications {...{ inbox }} />
             <UserIMage {...{ imageSource }} />
         </header>
     );
