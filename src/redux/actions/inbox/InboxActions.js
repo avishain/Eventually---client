@@ -1,8 +1,14 @@
-import { SET_NOTIFICATIONS } from '../../types';
+import { TOGGLE_NOTIFICATIONS_WINDOW, SET_SELECTED_NOTIFICATION } from '../../types';
 
-export const setNotifications = value  => {
+export const toggleNotificationsWindow = ()  => {
     return {
-        type: SET_NOTIFICATIONS,
-        payload: value
+        type: TOGGLE_NOTIFICATIONS_WINDOW
+    }
+}
+
+export const setSelectedNotification = notification  => {
+    return {
+        type: SET_SELECTED_NOTIFICATION,
+        payload: notification
     }
 }

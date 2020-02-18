@@ -9,11 +9,11 @@ const NotificationsWindow = props => {
     const { inbox, isOpen } = props;
 
     const height = isOpen ? inbox.length * 64 + 110 : 0;
-    
+
     return (
         <div style={{ ...containerStyle, height }}>
             <Top />
-            { props.inbox.map(notification => <Notification inbox={notification} /> )}
+            {props.inbox.map((notification, key) => <Notification {...{ notification, key }} />)}
         </div>
     );
 }

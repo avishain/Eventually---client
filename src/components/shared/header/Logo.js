@@ -1,12 +1,13 @@
 import React from 'react';
 import logo from '../../../assets/images/calendar.png';
+import { NavLink } from 'react-router-dom';
 
 const Logo = () => {
     return (
-        <div style={textStyle}>
+        <NavLink to='/' style={textStyle}>
             <span style={{ zIndex: 1 }}>Eventually</span>
             <img src={logo} alt='Eventually!' style={imageStyle} />
-        </div>
+        </NavLink>
     );
 }
 const imageStyle = {

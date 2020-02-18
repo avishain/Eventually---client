@@ -19,12 +19,12 @@ const Notifications = (props) => {
 
     return (
         <React.Fragment>
-            <a href='\#' style={containerStyle} {...{ onClick }}>
+            <div style={containerStyle} {...{ onClick }}>
                 <IosNotifications fontSize='38px' color='rgb(230,230,230)' {...{ shake }} />
                 <div style={notificationsContainer}>
                     <div style={{ fontSize: '10px', color: 'rgba(240,240,240,1)', fontWeight: 'bold' }} >{inbox.length}</div>
                 </div>
-            </a>
+            </div>
             <NotificationsWindow {...{ inbox }} />
         </React.Fragment>
     )
@@ -38,6 +38,7 @@ const containerStyle = {
     width: '40px',
     height: '45px',
     right: '190px',
+    cursor: 'pointer'
 };
 
 const notificationsContainer = {
