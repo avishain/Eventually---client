@@ -1,6 +1,5 @@
 import React from 'react';
 import * as moment from 'moment';
-import Popup from '../../components/shared/Popup';
 
 const Info = ({ title, value }) => {
     return (
@@ -18,7 +17,6 @@ const General = ({ name, admin, time, type }) => {
 
     return (
         <div style={containerStyle}>
-            <Popup />
             <h1 style={titleStyle}>{name}</h1>
             <Info title='Event type' value={type} />
             <Info title='Admin' value={admin} />

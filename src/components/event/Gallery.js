@@ -1,17 +1,7 @@
 import React from 'react';
-import './Gallery.css';
-import UploadButton from './UploadButton';
-
-const Image = ({ src }) => {
-    return (
-        <div className="responsive" style={{ cursor: 'pointer' }}>
-            <div className="gallery">
-                <img {...{ src }} alt="" style={{ objectFit: 'cover' }} />
-            </div>
-        </div>
-    );
-}
-
+import './gallery/Gallery.css';
+import UploadButton from './gallery/UploadButton';
+import Image from './gallery/Image';
 
 const Gallery = ({ Images }) => {
 

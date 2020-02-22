@@ -35,12 +35,12 @@ const Buttons = ({ userID, dateSelection, dates }) => {
 
         const body = {
             user: "5e2616c84f1ce248f9fd09e5",
-            availableDates: ["2020-01-18T01:32:41Z", "2020-01-19T01:32:41Z"],
+            availableDates: ["2020-01-25T01:32:41Z", "2020-01-19T01:32:41Z"],
             maybeDates: ["2020-01-24T01:32:41Z"],
             extraWeight: true
         }
 
-        fetch(`https://aqueous-fortress-81697.herokuapp.com/events/suggestion/5e273c234f1ce248f9b1f293/5e29cc9084051d36585e68ce`, {
+        fetch(`http://aqueous-fortress-81697.herokuapp.com/events/suggestion/5e273c234f1ce248f9b1f293/5e29cc9084051d36585e68ce`, {
             method: 'PUT',
             body: JSON.stringify(body),
             headers: { "Content-type": "application/json" }

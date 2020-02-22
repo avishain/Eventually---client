@@ -1,17 +1,21 @@
 import React from 'react';
 import MdCloudUpload from 'react-ionicons/lib/MdCloudUpload';
-import cloudinary from 'cloudinary-core';
-// import useScript from './useScript';
 
 const UploadButton = () => {
-    var cl = new cloudinary.Cloudinary({cloud_name: "dextz7jfo", secure: true});
 
-    // useScript("https://widget.cloudinary.com/v2.0/global/all.js");
-
+    const myWidget = window.cloudinary.createUploadWidget({
+        cloudName: 'dextz7jfo',
+        uploadPreset: 'c60xooc0',
+        apiKey: '867562551187554'
+    }, (error, result) => {
+        if (!error && result && result.event === "success") {
+            console.log('Done! Here is the image url: ', result.info.url);
+        }
+    });
+    
     return (
         <React.Fragment>
-            <div style={containerStyle} id="upload_widget">
-                {/* <input id="fileElem" type='file' style={inputStyle} onChange={handleChange} /> */}
+            <div style={containerStyle} onClick={() => myWidget.open()}>
                 <MdCloudUpload color='white' />
                 <span style={{ marginLeft: 15, color: 'white' }}>Upload</span>
             </div>
