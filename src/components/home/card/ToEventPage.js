@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const ToEventPage = props => {
     return (
-        <a onClick={() => alert('To event page')} href='#\' style={containerStyle}>
+        <NavLink to={`/Event/${props.id}`} style={containerStyle}>
             <div style={textStyle}>To event page</div>
-        </a>
+        </NavLink>
     );
 }
 const containerStyle = {
@@ -17,7 +18,8 @@ const containerStyle = {
     borderRadius: '20px',
     justifyContent: 'center',
     alignItems: 'center',
-    display: 'flex'
+    display: 'flex',
+    cursor: 'pointer'
 }
 
 const textStyle = {

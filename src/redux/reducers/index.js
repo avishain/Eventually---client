@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import HomeReducers from './home/homeReducers';
+import EventReducer from './event/EventReducers';
 import InboxReducer from './inbox/InboxReducer';
 import UserReducer from './user/UserReducer';
 
 export default combineReducers({
-    home: HomeReducers,
+    event: EventReducer,
     inbox: InboxReducer,
     user: UserReducer
 });

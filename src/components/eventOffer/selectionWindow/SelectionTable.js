@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import IosRadioButtonOff from 'react-ionicons/lib/IosRadioButtonOff';
-import IosRadioButtonOn from 'react-ionicons/lib/IosRadioButtonOn';
 import { connect } from 'react-redux';
+import { resetEventDateSelection } from '../../../redux/actions';
 import TableRow from './TableRow';
 
 const SelectionTable = props => {
+
     const [ready, setReady] = useState(false);
+    const [wasSelectionReset, selectionReset] = useState(false);
     const [dates, setDates] = useState();
 
     useEffect(() => {
-        if (!ready) {
+        if (!ready && props.eventID) {
             fetch(`https://aqueous-fortress-81697.herokuapp.com/events/${props.eventID}`)
                 .then(response => response.json())
                 .then(event => {
@@ -18,7 +19,11 @@ const SelectionTable = props => {
                 })
                 .catch(error => console.log(error));
         }
-    })
+        if (!wasSelectionReset && ready) {
+            props.resetEventDateSelection(dates);
+            selectionReset(true);
+        }
+    }, [ready, wasSelectionReset, props, dates]);
 
     return (
         ready &&
@@ -31,7 +36,7 @@ const SelectionTable = props => {
                         <th style={titleStyle}>Not Available</th>
                         <th style={titleStyle}>Might not be Available</th>
                     </tr>
-                    {dates.map((date, key) => <TableRow {...{ date, key }} />)}
+                    {dates.map((date, key) => <TableRow {...{ date, key }} index={key} />)}
                 </tbody>
             </table>
         </div>
@@ -50,10 +55,10 @@ const titleStyle = {
     color: '#141923'
 }
 
-function notification(state) {
+function mapStateToProps(state) {
     return {
         eventID: state.inbox.selectedNotification.event
     }
 }
 
-export default connect(notification, null)(SelectionTable);
+export default connect(mapStateToProps, { resetEventDateSelection })(SelectionTable);

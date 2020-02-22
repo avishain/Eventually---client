@@ -7,8 +7,10 @@ import { connect } from 'react-redux';
 import { setUser } from './redux/actions';
 import { Route } from 'react-router-dom';
 import EventOffer from './components/EventOffer';
+import Event from './components/Event';
 
 const userID = '5e2616c84f1ce248f9fd09e3';
+// const userID = '5e2616c84f1ce248f9fd09e5';
 
 const App = props => {
     const [imageSource, setImageSource] = useState('');
@@ -16,16 +18,16 @@ const App = props => {
     const [ready, setReady] = useState(false);
 
     useEffect(() => {
-        if(!ready) {
+        if (!ready) {
             fetch(`https://aqueous-fortress-81697.herokuapp.com/users/${userID}`)
-            .then(response => response.json())
-            .then(data => {
-                props.setUser(data);
-                setImageSource(data.profileImage);
-                setInbox(data.inbox);
-                setReady(true);
-            })
-            .catch(error => console.log(error));
+                .then(response => response.json())
+                .then(data => {
+                    props.setUser(data);
+                    setImageSource(data.profileImage);
+                    setInbox(data.inbox);
+                    setReady(true);
+                })
+                .catch(error => console.log(error));
         }
     });
 
@@ -34,10 +36,11 @@ const App = props => {
             {
                 ready && <React.Fragment>
                     <Header {...{ imageSource, inbox }} />
-                    {/* <div style={{ height: '100%' }}> */}
+                    <div style={{ minHeight: 'calc(100vh - 150px)' }}>
                         <Route exact path="/" component={Home} />
                         <Route path="/EventOffer" component={EventOffer} />
-                    {/* </div> */}
+                        <Route path="/Event/:id" component={Event} />
+                    </div>
                     <Footer />
                 </React.Fragment>
             }

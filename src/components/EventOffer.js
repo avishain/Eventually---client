@@ -2,13 +2,14 @@ import React from 'react';
 import '../App.css';
 import Container from 'react-bootstrap/Container';
 import SelectionWindow from './eventOffer/SelectionWindow';
+import Buttons from './eventOffer/Buttons';
 
 const EventOffer = () => {
     return (
         <Container style={{ width: '60%' }}>
             <h1 style={titleStyle}>Date selection</h1>
             <SelectionWindow />
-            {/* <Buttons /> */}
+            <Buttons />
         </Container>
     );
 }

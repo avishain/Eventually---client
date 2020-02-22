@@ -2,16 +2,22 @@ import React from 'react';
 import Title from './card/Title';
 import Info from './card/Info';
 import ToEventPage from './card/ToEventPage';
+import * as moment from 'moment';
 
-const EventCard = () => {
+const EventCard = ({ event }) => {
+    const { name, time, profileImage, _id } = event;
+    const title = name;
+
+    const subTitle = moment(time).format('dddd, DD/MM/YYYY') + ' at ' + moment(time).format('HH:mm');
+
     return (
         <div style={containerStyle}>
             <div style={{ width: '50%', height: '100%', position: 'relative' }}>
-                <Title title="Celebrating John's birthday" subTitle="Saturday, 21/11/2019 at 17:30" />
+                <Title {...{ title, subTitle }} />
                 <Info participants={12} photos={82} messages={14} />
-                <ToEventPage />
+                <ToEventPage id={_id} />
             </div>
-            <img style={imageStyle} src='https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F48535668%2F70158655713%2F1%2Foriginal.jpg?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C401%2C4816%2C2408&s=5cd8ad851f2e032e31bea87450f07e26' alt='barbeque' />
+            <img style={imageStyle} src={profileImage} alt='barbeque' />
         </div>
     );
 }
