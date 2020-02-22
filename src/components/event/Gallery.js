@@ -3,11 +3,11 @@ import './gallery/Gallery.css';
 import UploadButton from './gallery/UploadButton';
 import Image from './gallery/Image';
 
-const Gallery = ({ Images }) => {
+const Gallery = ({ Images, eventID, userID }) => {
 
     return (
         <div style={containerStyle}>
-            <UploadButton />
+            <UploadButton {...{ eventID, userID }} />
             {Images.map((image, key) => <Image src={image.url} {...{ key }} />)}
         </div>
     );

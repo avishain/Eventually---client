@@ -1,4 +1,4 @@
-import { SET_EVENT_DATE_SELECTION, SELECT_EVENT_DATE_SELECTION, SET_EVENT_PAGE_CURRENT_TAB } from '../../types';
+import { SET_EVENT_DATE_SELECTION, SELECT_EVENT_DATE_SELECTION, SET_EVENT_PAGE_CURRENT_TAB, SET_EVENT_RETREIVE } from '../../types';
 
 export const resetEventDateSelection = dates  => {
     return {
@@ -18,5 +18,12 @@ export const setEventPageCurrentTab = selection  => {
     return {
         type: SET_EVENT_PAGE_CURRENT_TAB,
         payload: selection
+    }
+}
+
+export const setEventRetreive = wasRetreived  => {
+    return {
+        type: SET_EVENT_RETREIVE,
+        payload: wasRetreived
     }
 }

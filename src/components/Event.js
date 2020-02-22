@@ -3,14 +3,16 @@ import SideNavBar from './event/SideNavBar';
 import General from './event/General';
 import Gallery from './event/Gallery';
 import { connect } from 'react-redux';
+import { setEventRetreive } from '../redux/actions';
 
-const Event = props => {
+const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive }) => {
     const [event, setEvent] = useState(null);
-    const [eventRetrived, setEventRetreive] = useState(false);
+    // const [eventRetrived, setEventRetreive] = useState(false);
+    const eventID = match.params.id;
 
     useEffect(() => {
         if (!eventRetrived) {
-            fetch(`https://aqueous-fortress-81697.herokuapp.com/events/${props.match.params.id}`)
+            fetch(`https://aqueous-fortress-81697.herokuapp.com/events/${eventID}`)
                 .then(res => res.json())
                 .then(data => {
                     setEvent(data);
@@ -21,14 +23,14 @@ const Event = props => {
                     alert('Problem occured while retreiving event data');
                 })
         }
-    }, [event, eventRetrived])
-    
-    if(eventRetrived) {
+    }, [event, eventRetrived, eventID])
+
+    if (eventRetrived) {
         var { name, profileImage, admin, time, type, Images } = event;
     }
 
     const getView = selection => {
-        switch(selection) {
+        switch (selection) {
             case 0:
                 return <General {...{ name, admin, time, type }} />;
             case 1:
@@ -36,7 +38,7 @@ const Event = props => {
             case 2:
                 return <p>Participants</p>;
             case 3:
-                return <Gallery {...{ Images }} />;
+                return <Gallery {...{ Images, eventID, userID }} />;
             default:
                 return <General {...{ name, admin, time, type }} />;
         }
@@ -46,7 +48,7 @@ const Event = props => {
         eventRetrived &&
         <div style={containerStyle}>
             <SideNavBar image={profileImage} title={name} />
-            { getView(props.selectedView) }
+            {getView(selectedView)}
         </div>
     );
 }
@@ -58,8 +60,10 @@ const containerStyle = {
 
 function mapStateToProps(state) {
     return {
-        selectedView: state.event.eventPageCurrentTab
+        selectedView: state.event.eventPageCurrentTab,
+        eventRetrived: state.event.retreived,
+        userID: state.user.data._id
     }
 }
 
-export default connect(mapStateToProps, null)(Event);
+export default connect(mapStateToProps, { setEventRetreive })(Event);

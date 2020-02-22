@@ -1,18 +1,36 @@
 import React from 'react';
 import MdCloudUpload from 'react-ionicons/lib/MdCloudUpload';
+import { connect } from 'react-redux';
+import { setEventRetreive } from '../../../redux/actions';
 
-const UploadButton = () => {
+const UploadButton = ({ eventID, userID, setEventRetreive }) => {
 
     const myWidget = window.cloudinary.createUploadWidget({
         cloudName: 'dextz7jfo',
         uploadPreset: 'c60xooc0',
         apiKey: '867562551187554'
     }, (error, result) => {
+
+        const body = {
+            url: result.info.url,
+            uploader: userID
+        };
+
         if (!error && result && result.event === "success") {
-            console.log('Done! Here is the image url: ', result.info.url);
+            fetch(`https://aqueous-fortress-81697.herokuapp.com/events/image/${eventID}`, {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: { "Content-type": "application/json" }
+            })
+            .then(response => response.text())
+            .then(json => {
+                console.log(json);
+                setEventRetreive(false);
+            })
+            .catch(e => console.log(e));
         }
     });
-    
+
     return (
         <React.Fragment>
             <div style={containerStyle} onClick={() => myWidget.open()}>
@@ -33,15 +51,4 @@ const containerStyle = {
     position: 'relative'
 }
 
-const inputStyle = {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    cursor: 'pointer',
-    opacity: 0
-    // display: 'none'
-}
-
-export default UploadButton;
+export default connect(null, { setEventRetreive })(UploadButton);
