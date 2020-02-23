@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Top = () => {
+const Top = ({ title, subtitle}) => {
     return (
         <div style={containerStyle}>
-            <h4 style={titleStyle}>Event description</h4>
-            <h5 style={subTitleStyle}>"Beach, bears, barbeque and getting some tan..."</h5>
+            <h4 style={titleStyle}>{title}</h4>
+            { subtitle && <h5 style={subTitleStyle}>{subtitle}</h5> }
         </div>
     );
 }

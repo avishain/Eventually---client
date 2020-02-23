@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { setEventRetreive } from '../redux/actions';
 
 const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive }) => {
+
     const [event, setEvent] = useState(null);
-    // const [eventRetrived, setEventRetreive] = useState(false);
+
     const eventID = match.params.id;
 
     useEffect(() => {

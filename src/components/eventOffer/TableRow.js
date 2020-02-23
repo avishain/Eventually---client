@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { selectEventDateSelection } from '../../../redux/actions';
+import { selectEventDateSelection } from '../../redux/actions';
 import IosRadioButtonOff from 'react-ionicons/lib/IosRadioButtonOff';
 import IosRadioButtonOn from 'react-ionicons/lib/IosRadioButtonOn';
 import * as moment from 'moment';

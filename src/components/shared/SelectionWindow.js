@@ -1,14 +1,11 @@
 import React from 'react';
 import Top from './selectionWindow/Top';
-import InstructionPanel from './selectionWindow/InstructionPanel';
-import SelectionTable from './selectionWindow/SelectionTable';
 
-const SelectionWindow = () => {
+const SelectionWindow = ({ title, subtitle, children }) => {
     return (
         <div style={containerStyle}>
-            <Top />
-            <InstructionPanel />
-            <SelectionTable />
+            <Top {...{ title, subtitle }} />
+            {children}
         </div>
     );
 }

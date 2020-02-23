@@ -1,11 +1,9 @@
 import React from 'react';
 import MdAdd from 'react-ionicons/lib/MdAdd'
-import { Link } from 'react-router-dom'
-import createEvent from '../../components/shared/createEvent/CreateEvent';
 
 const CreateEventButton = () => {
     return (
-        <a href='/createEvent\' onClick={() => alert('create event clicked')} style={containerStyle}>
+        <a href='/createEvent/' style={containerStyle}>
             <MdAdd color='white' />
             <div style={{ width: '50%', color: 'white' }}>
                 Create event

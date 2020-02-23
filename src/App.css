@@ -4,7 +4,7 @@ html {
 }
 
 html, body {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 a:hover {
@@ -20,12 +20,6 @@ a:hover {
   height: 40vmin;
   pointer-events: none;
 }
-/* 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 .App-header {
   background-color: #282c34;
@@ -60,17 +54,11 @@ a:hover {
 	padding: 5px;
 	max-width: 80%;
 }
-.createEventCol {
-	border: 1px solid;
-	padding: 10px 0px;
-	outline: none;
-	margin: 10px;
-	flex: 3;
-	min-width: 480px;
-}
+
 .createEventCol:active {
 	background: #aaa;
 }
+
 .eventCreateColContainer {
 	display: flex;
 	flex-direction: column;
@@ -87,15 +75,10 @@ a:hover {
 
 .TimePicker {
 	padding: 5%;
-	text-decoration: none;
-	
-	
+	text-decoration: none;	
 }
 
 .nextButtonGeneralDetails {
-	position: absolute;
-    right: 27%;
-    /* left: 36px; */
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
@@ -107,15 +90,10 @@ a:hover {
 	flex:3;
 }
 .EventConfirmationMainMenu {
-	flex-direction: column;
-	flex: auto;
-	border: 2px soilid;
-	width: 80%;
-	height: 60%;
-	background-image: url("./components/shared/createEvent/celebrate3.jpg");
+	background-image: url("./assets/images/celebrate3.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	opacity: 90%;
+	opacity: 0.9;
 }
 .button1 {
 	align-content: center;
@@ -123,7 +101,6 @@ a:hover {
 	background-color: white;
 	/* margin-top: 30%; */
 }
-
 
 /* ----------------CREATEEVENT-participantspage------------ */
 
@@ -138,20 +115,14 @@ a:hover {
 }
 
 .NextButtonParticipants {
-
-	position: absolute;
     right: 27%;
 	cursor: pointer;
-	
-	
 }
 
 .FriendsSelectionHead {
-
 	margin: 5%;
 	font-weight: bold;
 	font-size: x-large;
-
 }
 
 
@@ -160,9 +131,6 @@ a:hover {
 .buttonsConfirmPreview {
 	display: flex;
 	border: 1px black solid;
-	
-	/* flex-direction: row; */
-	/* margin: 5%; */
 }
 .AttendButton {
 	 font-Family: 'sans-serif';
@@ -176,15 +144,12 @@ a:hover {
 	 width: '11%';
 	 height : 40px;
 	position: absolute;
-   
 	display: 'flex';
 	cursor: 'pointer';
-	
 }
 
 .NextButtonConfirmPage {
 	display: flex;
-    position: absolute;
     width: 80%;
     left: 29%;
 }
@@ -197,5 +162,4 @@ a:hover {
     flex-direction: initial;
     flex: auto;
 	margin: auto;
-	/* padding: 1%; */
 }

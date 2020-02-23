@@ -8,9 +8,7 @@ import { setUser } from './redux/actions';
 import { Route } from 'react-router-dom';
 import EventOffer from './components/EventOffer';
 import Event from './components/Event';
-import Participants from './components/shared/createEvent/Participants';
-import createEvent from './components/shared/createEvent/CreateEvent';
-import ConfirmPage from './components/shared/createEvent/ConfirmPage';
+import CreateEvent from './components/CreateEvent';
 
 const userID = '5e2616c84f1ce248f9fd09e3';
 // const userID = '5e2616c84f1ce248f9fd09e5';
@@ -43,9 +41,7 @@ const App = props => {
 						<Route path="/EventOffer" component={EventOffer} />
 						<Route path="/Event/:id" component={Event} />
 						<Route path="/" exact component={Home} />
-						<Route path="/createEvent/" exact component={createEvent} />
-						<Route path="/createEvent/participants" exact component={Participants} />
-						<Route path="/createEvent/participants/confirmPage" exact component={ConfirmPage} />
+						<Route path="/CreateEvent" exact component={CreateEvent} />
 					</div>
 					<Footer />
 				</React.Fragment>

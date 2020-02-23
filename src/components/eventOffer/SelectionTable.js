@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { resetEventDateSelection } from '../../../redux/actions';
+import { resetEventDateSelection } from '../../redux/actions';
 import TableRow from './TableRow';
 
 const SelectionTable = props => {
