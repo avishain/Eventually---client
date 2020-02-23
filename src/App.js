@@ -40,7 +40,6 @@ const App = props => {
 				ready && <React.Fragment>
 					<Header {...{ imageSource, inbox }} />
 					<div style={{ minHeight: 'calc(100vh - 150px)' }}>
-						<Route exact path="/" component={Home} />
 						<Route path="/EventOffer" component={EventOffer} />
 						<Route path="/Event/:id" component={Event} />
 						<Route path="/" exact component={Home} />

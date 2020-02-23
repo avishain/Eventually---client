@@ -39,9 +39,7 @@ const CreateEvent = (props) => {
 	const [dateSelected, setDateSelected] = useState('');
 	const [timeSelected, setTimeSelected] = useState(0);
 
-	useEffect(() => {
-		console.log('create event loaded');
-	}, []); //[] menas un only once
+
 
 	const updateDate = date => {
 		console.log('in updatedatatype date.value is ', date);
@@ -59,22 +57,22 @@ const CreateEvent = (props) => {
 				<div className="eventCreateColContainer" >
 					<PageNav title="General details" className="pageNav" />
 					<EventTitle />
-
 					<EventDate />
 					<EventType />
 				</div>
 				<div className="eventCreateColContainersecond">
-					<Calendar onChange={(date) => updateDate(date)} />
-
+					<Calendar onChange={(date) => updateDate(date)} className="Calendar" width='100%' />
 
 					<div className="TimePicker">
 						TIME
 					<TimePicker showSecond={false} defaultValue={now} onChange={timeSelected => updateTime(timeSelected)} />
 					</div>
-					<NextPageButton />
 					<Route path="createEvent/participants" exact component={Participants} />
 				</div>
 
+			</div>
+			<div className="nextButtonGeneralDetails" >
+				<NextPageButton />
 			</div>
 		</Router>
 
@@ -93,6 +91,8 @@ const containerStyle = {
 	width: '45%'
 
 }
+
+
 
 
 

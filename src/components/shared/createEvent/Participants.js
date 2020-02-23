@@ -8,6 +8,8 @@ import List from 'react-list-select'
 import makeAnimated from 'react-select/animated/';
 import NextButtonCustom from './NextButtonCustom';
 import 'bootstrap/dist/css/bootstrap.css';
+import NextPageButton from './NextPageButton';
+import NextPageButtonCustom from './NextButtonCustom';
 
 const colourOptions = [1, 2, 3] //our array of colours
 const Users = [
@@ -37,20 +39,16 @@ const options = [
 
 ]
 
-const Participants = ( ) => {
+const Participants = () => {
 	return (
-		<div style={{ display: "flex" }}>
+		<div >
 			<div className="friendsSelectionMainWindow" style={containerStyle}>
 				<PageNav title="Participants" />
-
-				<div className="selectionHead">Invite people to event</div>
+				<div className="FriendsSelectionHead">Invite people to event</div>
 				<Select options={options} isMulti placeholder="name or email" noOptionsMessage={() => "No users found"} components={makeAnimated()} className="friendsSelect" />
-
-				{/* <User /> */}
 			</div >
 			<div className="NextButtonParticipants" >
-				<NextButtonCustom path='/createEvent/participants/confirmPage' title='Create event and send invitations' />
-
+				<NextPageButtonCustom path='/createEvent/participants/confirmPage' title='Next' />
 			</div>
 
 		</div>
@@ -61,34 +59,16 @@ const Participants = ( ) => {
 }
 
 const containerStyle = {
-	border: '1px solid black',
 	boxSizing: 'border-box',
 	boxShadow: '10px 10px 10px rgba(103, 54, 107, 0.15)',
 	borderRadius: 4,
-	margin: '5%',
+	// margin: '5%',
 	height: '585px',
-	width: '80%'
+	width: '45%'
 
 }
 
-const friendsSelect = {
-	width: '100px'
-}
+
 
 export default Participants;
 
-
-// const colourStyles = {
-// 	control: styles => ({ ...styles, backgroundColor: 'white' }),
-// 	option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-
-// 	  return {
-// 		...styles,
-// 		backgroundColor: isDisabled ? 'red' : 'blue',
-// 		color: '#FFF',
-// 		cursor: isDisabled ? 'not-allowed' : 'default',
-
-// 	  };
-// 	},
-
-//   };
