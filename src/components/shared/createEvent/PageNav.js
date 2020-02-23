@@ -8,15 +8,13 @@ import { useEffect, useState } from 'react';
 
 const PageNav = path => {
 
-	// useEffect(() => {
-	// 	console.log('Event titley!');
-	// }, []); //[] menas un only once
+	
 
 
 	return (
 
 		<div className="PageNavClass" style={{ width: '100%', display: 'flex', flex: '1' }}>
-			<div style={path.title === 'General details' ? selectedStyle : selectedStyle}  >
+			<div style={path.title === 'General details' ? selectedStyle : notSelectedStyle}  >
 				General details
 				<MdArrowDropright color='black' />
 			</div>

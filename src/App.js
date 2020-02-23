@@ -8,44 +8,51 @@ import { setUser } from './redux/actions';
 import { Route } from 'react-router-dom';
 import EventOffer from './components/EventOffer';
 import Event from './components/Event';
+import Participants from './components/shared/createEvent/Participants';
+import createEvent from './components/shared/createEvent/CreateEvent';
+import ConfirmPage from './components/shared/createEvent/ConfirmPage';
 
 const userID = '5e2616c84f1ce248f9fd09e3';
 // const userID = '5e2616c84f1ce248f9fd09e5';
 
 const App = props => {
-    const [imageSource, setImageSource] = useState('');
-    const [inbox, setInbox] = useState();
-    const [ready, setReady] = useState(false);
+	const [imageSource, setImageSource] = useState('');
+	const [inbox, setInbox] = useState();
+	const [ready, setReady] = useState(false);
 
-    useEffect(() => {
-        if (!ready) {
-            fetch(`https://aqueous-fortress-81697.herokuapp.com/users/${userID}`)
-                .then(response => response.json())
-                .then(data => {
-                    props.setUser(data);
-                    setImageSource(data.profileImage);
-                    setInbox(data.inbox);
-                    setReady(true);
-                })
-                .catch(error => console.log(error));
-        }
-    });
+	useEffect(() => {
+		if (!ready) {
+			fetch(`https://aqueous-fortress-81697.herokuapp.com/users/${userID}`)
+				.then(response => response.json())
+				.then(data => {
+					props.setUser(data);
+					setImageSource(data.profileImage);
+					setInbox(data.inbox);
+					setReady(true);
+				})
+				.catch(error => console.log(error));
+		}
+	});
 
-    return (
-        <div className="App" style={{ backgroundColor: '#F3EBE3', height: '100%' }} >
-            {
-                ready && <React.Fragment>
-                    <Header {...{ imageSource, inbox }} />
-                    <div style={{ minHeight: 'calc(100vh - 150px)' }}>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/EventOffer" component={EventOffer} />
-                        <Route path="/Event/:id" component={Event} />
-                    </div>
-                    <Footer />
-                </React.Fragment>
-            }
-        </div>
-    );
+	return (
+		<div className="App" style={{ backgroundColor: '#F3EBE3', height: '100%' }} >
+			{
+				ready && <React.Fragment>
+					<Header {...{ imageSource, inbox }} />
+					<div style={{ minHeight: 'calc(100vh - 150px)' }}>
+						<Route exact path="/" component={Home} />
+						<Route path="/EventOffer" component={EventOffer} />
+						<Route path="/Event/:id" component={Event} />
+						<Route path="/" exact component={Home} />
+						<Route path="/createEvent/" exact component={createEvent} />
+						<Route path="/createEvent/participants" exact component={Participants} />
+						<Route path="/createEvent/participants/confirmPage" exact component={ConfirmPage} />
+					</div>
+					<Footer />
+				</React.Fragment>
+			}
+		</div>
+	);
 }
 
 export default connect(null, { setUser })(App);

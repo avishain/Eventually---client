@@ -3,7 +3,6 @@ import { Component } from "react";
 import Calendar from 'react-calendar'
 import { MDBSelect } from "mdbreact";
 import Select, { components } from 'react-select';
-import UsersList from '../Users/UsersList'
 import PageNav from './PageNav'
 import List from 'react-list-select'
 import makeAnimated from 'react-select/animated/';
@@ -50,7 +49,7 @@ const Participants = ( ) => {
 				{/* <User /> */}
 			</div >
 			<div className="NextButtonParticipants" >
-				<NextButtonCustom path='/createEvent/participants/confirm' />
+				<NextButtonCustom path='/createEvent/participants/confirmPage' title='Create event and send invitations' />
 
 			</div>
 
