@@ -2,6 +2,7 @@ import React from 'react';
 import InputWindow from '../InputWindow';
 import TimePicker from 'rc-time-picker';
 import moment from 'moment';
+import 'rc-time-picker/assets/index.css';
 
 const TimePick = () => {
 

@@ -77,6 +77,13 @@ a:hover {
 	padding: 5%;
 	text-decoration: none;	
 }
+.TimerPickerOpened {
+	/* display: flex;
+	border: 5px black solid;
+	width: 100px;
+	position: fixed;
+	bottom: 50%; */
+}
 
 .nextButtonGeneralDetails {
     display: flex;
