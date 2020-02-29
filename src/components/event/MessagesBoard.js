@@ -1,15 +1,31 @@
 import React from 'react';
+import Message from './messages/Message';
+import bgImage from '../../assets/images/mbbg.jpg';
 
-const MessagesBoard = ({ Images }) => {
-
+const MessagesBoard = ({ Messages }) => {
     return (
-        <div style={containerStyle}>
+        <div style={bgImageStyle}>
+            <div style={containerStyle}>
+                {Messages.map((message, key) => <Message {...{ message, key }} index={key} />)}
+            </div>
         </div>
     );
 }
 
+const bgImageStyle = { 
+    backgroundImage: `url(${bgImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    display: 'flex', 
+    flex: 1 
+}
+
 const containerStyle = {
-    margin: '10vh 2%'
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    padding: '20px 2%',
+    backgroundColor: 'rgba(243,235,227,.7)'
 }
 
 export default MessagesBoard;

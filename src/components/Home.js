@@ -11,7 +11,7 @@ const Home = props => {
     const [events, setEvent] = useState();
 
     useEffect(() => {
-
+        console.log('home');
         if (!eventsReady && props.userEvents.length > 0 ) {
             let query = `https://aqueous-fortress-81697.herokuapp.com/events/?ids=${props.userEvents[0]}`;
             for (let i = 1; i < props.userEvents.length; ++i) {

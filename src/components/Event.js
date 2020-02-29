@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SideNavBar from './event/SideNavBar';
 import General from './event/General';
 import Gallery from './event/Gallery';
+import MessagesBoard from './event/MessagesBoard';
 import { connect } from 'react-redux';
 import { setEventRetreive } from '../redux/actions';
 
@@ -24,10 +25,10 @@ const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive })
                     alert('Problem occured while retreiving event data');
                 })
         }
-    }, [event, eventRetrived, eventID])
+    })
 
     if (eventRetrived) {
-        var { name, profileImage, admin, time, type, Images } = event;
+        var { name, profileImage, admin, time, type, Images, Messages } = event;
     }
 
     const getView = selection => {
@@ -35,7 +36,7 @@ const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive })
             case 0:
                 return <General {...{ name, admin, time, type }} />;
             case 1:
-                return <p>Messages board</p>;
+                return <MessagesBoard {...{ Messages }} />;
             case 2:
                 return <p>Participants</p>;
             case 3:

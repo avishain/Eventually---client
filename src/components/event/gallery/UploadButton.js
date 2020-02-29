@@ -23,10 +23,7 @@ const UploadButton = ({ eventID, userID, setEventRetreive }) => {
                 headers: { "Content-type": "application/json" }
             })
             .then(response => response.text())
-            .then(json => {
-                console.log(json);
-                setEventRetreive(false);
-            })
+            .then(json => setEventRetreive(false))
             .catch(e => console.log(e));
         }
     });
@@ -37,7 +34,6 @@ const UploadButton = ({ eventID, userID, setEventRetreive }) => {
                 <MdCloudUpload color='white' />
                 <span style={{ marginLeft: 15, color: 'white' }}>Upload</span>
             </div>
-            <div style={{ display: 'none' }} id="test" />
         </React.Fragment>
     );
 }
@@ -48,7 +44,8 @@ const containerStyle = {
     borderRadius: 5,
     maxWidth: 200,
     marginBottom: 20,
-    position: 'relative'
+    position: 'relative',
+    cursor: 'pointer'
 }
 
 export default connect(null, { setEventRetreive })(UploadButton);

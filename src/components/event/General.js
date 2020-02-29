@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import * as moment from 'moment';
 
 const Info = ({ title, value }) => {
@@ -11,15 +11,31 @@ const Info = ({ title, value }) => {
 }
 
 const General = ({ name, admin, time, type }) => {
+    const [adminName, setAdminName] = useState();
+    const [retreived, setRetreived] = useState(false);
 
     const dateFormat = moment(time).format('dddd, MMMM Do, YYYY');
     const hourFormat = moment(time).format('HH:mm');
 
+    useEffect(() => {
+        if (!retreived) {
+            console.log('5e2616c84f1ce248f9fd09e3', admin);
+            fetch(`https://aqueous-fortress-81697.herokuapp.com/users/${admin}`)
+                .then(response => response.json())
+				.then(data => {
+                    setAdminName(data.name);
+                    setRetreived(true);
+                })
+                .catch(e => console.log(e));
+        }
+    });
+
     return (
+        retreived && 
         <div style={containerStyle}>
             <h1 style={titleStyle}>{name}</h1>
             <Info title='Event type' value={type} />
-            <Info title='Admin' value={admin} />
+            <Info title='Admin' value={adminName} />
             <Info title='Date' value={dateFormat} />
             <Info title='Time' value={hourFormat} />
         </div>
