@@ -1,15 +1,22 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import ConfirmPageButton from './ConfirmPageButton'
+import { connect } from 'react-redux';
+import * as moment from 'moment';
 
-const Confirm = () => {
+const Confirm = ({ eventDetails }) => {
+    
+    const { title, date, time } = eventDetails;
+    const formmatedDate = moment(date).format('dddd, MMMM Do YYYY');
+    const eventTime = `${formmatedDate} at ${time}`;
+
     return (
         <div style={{ width: '100%', marginBottom: 30 }}>
             <div className="EventConfirmationMainMenu" style={containerStyle}>
                 <div style={{ height: '100%', backgroundColor: 'rgba(0,0,0,.5)', position: 'relative' }}>
                     <div style={titleStyle}>
-                        <h1 style={{ fontSize: 25 }}>JOHN'S BIRTHDAY CELEBRATION</h1>
-                        <h2 style={{ fontSize: 20 }}> February 6th, 2020 at 17:30</h2>
+                        <h1 style={{ fontSize: 25 }}>{title.toUpperCase()}</h1>
+                        <h2 style={{ fontSize: 20 }}>{eventTime}</h2>
                     </div>
                     <div style={{ display: 'flex', position: 'absolute', right: 30, bottom: 30 }} >
                         <ConfirmPageButton text="Attend" />
@@ -37,4 +44,10 @@ const titleStyle = {
     color: 'white'
 }
 
-export default Confirm;
+function mapStateToProps(state) {
+    return {
+        eventDetails: state.createEvent
+    }
+}
+
+export default connect(mapStateToProps,null)(Confirm);

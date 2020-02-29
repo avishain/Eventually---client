@@ -1,4 +1,4 @@
-import { SET_CREATE_EVENT_VIEW, SET_TITLE, SET_DATE_SELECTION_TYPE, SET_TYPE, SET_DATE, SET_TIME } from '../../types';
+import { SET_CREATE_EVENT_VIEW, SET_TITLE, SET_DATE_SELECTION_TYPE, SET_TYPE, SET_DATE, SET_TIME, SET_FRIENDS_TO_SELECT, SET_FRIEND_INVITATION } from '../../types';
 
 const initialState = {
     view: 0,
@@ -6,7 +6,8 @@ const initialState = {
     selectionType: 'Self',
     eventType: null,
     date: null,
-    time: null
+    time: null,
+    friends: []
 }
 
 export default (state = initialState, action) => {
@@ -23,6 +24,12 @@ export default (state = initialState, action) => {
             return { ...state, date: action.payload };
         case SET_TIME:
             return { ...state, time: action.payload };
+        case SET_FRIENDS_TO_SELECT:
+            return { ...state, friends: [...state.friends, action.payload] };
+        case SET_FRIEND_INVITATION:
+            let isInvited = state.friends[action.payload].isInvited;
+            state.friends[action.payload].isInvited = !isInvited;
+            return { ...state, friends: [...state.friends] };
         default:
             return state;
     }

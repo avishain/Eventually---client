@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import MdCloudUpload from 'react-ionicons/lib/MdCloudUpload';
 
 const Button = ({ type }) => {
 
@@ -30,12 +29,16 @@ const buttonStyle = {
     cursor: 'pointer'
 }
 
-
-const Popup = ({ type, title }) => {
+const Popup = ({ type, title, onClick }) => {
     const [visible, setVisibility] = useState(true);
 
+    const onTap = () => {
+        setVisibility(!visible);
+        onClick();
+    }
+
     return (
-        <div style={{ ...containerStyle, display: visible ? 'flex' : 'none' }} onClick={() => setVisibility(!visible)} >
+        <div style={{ ...containerStyle, display: visible ? 'flex' : 'none' }} onClick={onTap} >
             <div style={boxStyle}>
                 {title}
                 {
@@ -70,6 +73,7 @@ const boxStyle = {
     backgroundColor: 'white',
     boxShadow: '2px 5px 4px rgba(0, 0, 0, 0.5)',
     maxWidth: '50vw',
+    minWidth: '25vw',
     textAlign: 'left',
     fontSize: 13
 }

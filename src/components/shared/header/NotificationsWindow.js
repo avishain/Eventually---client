@@ -9,7 +9,7 @@ const NotificationsWindow = props => {
     const { inbox, isOpen } = props;
 
     const height = isOpen ? inbox.length * 64 + 110 : 0;
-
+    
     return (
         <div style={{ ...containerStyle, height }}>
             <Top />
@@ -20,7 +20,7 @@ const NotificationsWindow = props => {
 
 const containerStyle = {
     width: '350px',
-    transition: 'height .4s',
+    transition: 'height .3s',
     position: 'absolute',
     top: 85,
     right: 150,

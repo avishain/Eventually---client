@@ -1,4 +1,4 @@
-import { SET_CREATE_EVENT_VIEW, SET_TITLE, SET_DATE_SELECTION_TYPE, SET_TYPE, SET_DATE, SET_TIME } from '../../types';
+import { SET_CREATE_EVENT_VIEW, SET_TITLE, SET_DATE_SELECTION_TYPE, SET_TYPE, SET_DATE, SET_TIME, SET_FRIENDS_TO_SELECT, SET_FRIEND_INVITATION } from '../../types';
 
 export const setCreateEventView = view  => {
     return {
@@ -39,5 +39,19 @@ export const setEventTime = time  => {
     return {
         type: SET_TIME,
         payload: time
+    }
+}
+
+export const addFriendToSelectionList = friends  => {
+    return {
+        type: SET_FRIENDS_TO_SELECT,
+        payload: friends
+    }
+}
+
+export const setFriendInvitation = value  => {
+    return {
+        type: SET_FRIEND_INVITATION,
+        payload: value
     }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Popup from '../shared/Popup';
+import { useHistory } from 'react-router-dom';
 
 const Button = ({ submit, onClick }) => {
 
@@ -14,6 +15,7 @@ const Button = ({ submit, onClick }) => {
 
 const Buttons = ({ userID, dateSelection, dates }) => {
     const [popupVisible, setPopupVisibility] = useState(false);
+    const history = useHistory();
 
     const handleSubmit = () => {
         const availableDates = [], maybeDates = [];
@@ -52,6 +54,7 @@ const Buttons = ({ userID, dateSelection, dates }) => {
                 <Popup
                     type='notification'
                     title='Your selection was sent. The decision of the final date of the event will be received once all the participants will answe or within 4 days.'
+                    onClick={() => history.push("/")}
                 />
             }
             <Button submit onClick={handleSubmit} />

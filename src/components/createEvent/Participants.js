@@ -1,25 +1,48 @@
-import React from 'react';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated/';
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { useEffect } from 'react';
 import SelectionWindow from '../shared/SelectionWindow';
+import { connect } from 'react-redux';
+import FriendView from './participants/FriendView';
+import { addFriendToSelectionList, setFriendInvitation } from '../../redux/actions';
 
-const options = [
-    { value: 'elad', label: 'elad | www@www,com' },
-    { value: 'eli', label: 'eli | wwwWww.com' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
+const Participants = ({ friends, friendsList, addFriendToSelectionList, setFriendInvitation }) => {
+    const onClick = index => setFriendInvitation(index);
 
-const Participants = () => {
+    useEffect(() => {
+        if (friendsList < friends.length) {
+            friends.forEach(friend => {
+                fetch(`https://aqueous-fortress-81697.herokuapp.com/users/${friend}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const { name, email, profileImage } = data;
+                        addFriendToSelectionList({ name, email, profileImage, isInvited: false });
+                    })
+                    .catch(e => console.log(e))
+            });
+        }
+    })
+
     return (
+        friendsList.length > 0 && 
         <div style={{ width: '100%' }}>
             <SelectionWindow title='Invite people to event' >
-                <div style={{ marginBottom: 300, padding: 50 }}>
-                    <Select options={options} isMulti placeholder="name or email" noOptionsMessage={() => "No users found"} components={makeAnimated()} className="friendsSelect" />
+                <div style={{ minHeight: 300, padding: '15px 50px' }}>
+                    {
+                        friendsList.map((friend, key) => {
+                            const { name, email, profileImage, isInvited } = friend;
+                            return <FriendView {...{ name, email, profileImage, isInvited, onClick, key }} index={key} />;
+                        })
+                    }
                 </div>
             </SelectionWindow>
         </div>
     );
 }
 
-export default Participants;
+function mapStateToProps(state) {
+    return {
+        friends: state.user.data.friends,
+        friendsList: state.createEvent.friends
+    }
+}
+
+export default connect(mapStateToProps, { addFriendToSelectionList, setFriendInvitation })(Participants);

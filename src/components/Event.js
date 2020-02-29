@@ -4,30 +4,26 @@ import General from './event/General';
 import Gallery from './event/Gallery';
 import MessagesBoard from './event/MessagesBoard';
 import { connect } from 'react-redux';
-import { setEventRetreive } from '../redux/actions';
 
-const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive }) => {
+const Event = ({ userID, match, selectedView }) => {
 
     const [event, setEvent] = useState(null);
 
     const eventID = match.params.id;
 
     useEffect(() => {
-        if (!eventRetrived) {
+        if (event === null) {
             fetch(`https://aqueous-fortress-81697.herokuapp.com/events/${eventID}`)
                 .then(res => res.json())
-                .then(data => {
-                    setEvent(data);
-                    setEventRetreive(true);
-                })
+                .then(data => { setEvent(data) })
                 .catch(e => {
                     console.log(e);
-                    alert('Problem occured while retreiving event data');
+                    alert('Problem occured while retreiving event\'s data');
                 })
         }
     })
 
-    if (eventRetrived) {
+    if (event !== null) {
         var { name, profileImage, admin, time, type, Images, Messages } = event;
     }
 
@@ -47,7 +43,7 @@ const Event = ({ eventRetrived, userID, match, selectedView, setEventRetreive })
     }
 
     return (
-        eventRetrived &&
+        event !== null &&
         <div style={containerStyle}>
             <SideNavBar image={profileImage} title={name} />
             {getView(selectedView)}
@@ -63,9 +59,8 @@ const containerStyle = {
 function mapStateToProps(state) {
     return {
         selectedView: state.event.eventPageCurrentTab,
-        eventRetrived: state.event.retreived,
         userID: state.user.data._id
     }
 }
 
-export default connect(mapStateToProps, { setEventRetreive })(Event);
+export default connect(mapStateToProps, null)(Event);
